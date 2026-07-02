@@ -9,33 +9,33 @@ botoes[1].onclick = aumentaTamanho;
 
 function diminuiTamanho() {
     if (tamanhoSenha > 1) {
-        // tamanhoSenha = tamanhoSenha - 1;
+        tamanhoSenha--;
     }
+
     numeroSenha.textContent = tamanhoSenha;
     gerarSenha();
 }
 
 function aumentaTamanho() {
     if (tamanhoSenha < 20) {
-        // tamanhoSenha = tamanhoSenha + 1;
         tamanhoSenha++;
     }
+
     numeroSenha.textContent = tamanhoSenha;
     gerarSenha();
 }
 
 const campoSenha = document.querySelector('#campo-senha');
+const letrasMaiusculas = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-const letrasMaiusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 gerarSenha();
 
-function gerarSenha(){
+function gerarSenha() {
+    let senha = "";
 
-    for (let i = 0; i < tamanhoSenha;i++){ 
-        let numeroAleatorio = Math.random()*letrasMaiusculas.length;
-        numeroAleatorio = Math.floor(numeroAleatorio);
-        senha = senha + letrasMaiusculas[numeroAleatorio];
-        console.log(letrasMaiusculas[numeroAleatorio]); 
+    for (let i = 0; i < tamanhoSenha; i++) {
+        let numeroAleatorio = Math.floor(Math.random() * letrasMaiusculas.length);
+        senha += letrasMaiusculas[numeroAleatorio];
     }
 
     campoSenha.value = senha;
